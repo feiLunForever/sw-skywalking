@@ -1,0 +1,15 @@
+spring:
+  cloud:
+    nacos:
+      config:
+        namespace: dceedfe4-0041-41c5-be76-ed4c3689634d
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+      discovery:
+        namespace: dceedfe4-0041-41c5-be76-ed4c3689634d
+        server-addr: 127.0.0.1:8848
+  datasource:
+    url: jdbc:mysql://localhost:3306/midian?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true&serverTimezone=UTC
+    username: root
+    password: zyq52041310
+    driver-class-name: com.mysql.jdbc.Driver
