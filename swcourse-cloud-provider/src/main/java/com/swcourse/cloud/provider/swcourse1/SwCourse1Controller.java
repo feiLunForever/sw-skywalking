@@ -1,10 +1,11 @@
 package com.swcourse.cloud.provider.swcourse1;
 
-import org.apache.commons.lang.math.RandomUtils;
+import cn.hutool.core.util.RandomUtil;
+import com.sun.tools.attach.VirtualMachine;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import cn.hutool.core.util.RandomUtil;
 /**
  * @author your name or email
  * @version 0.1.0
@@ -17,6 +18,23 @@ public class SwCourse1Controller {
 
     @GetMapping("/premainTest")
     public String premainTest(){
-        return RandomUtil
+        return RandomUtil.simpleUUID();
+    }
+
+    @GetMapping("/attachTest/{pid}")
+    public String premainTest(@PathVariable String pid) throws Exception{
+        VirtualMachine vmObj = null;
+        try {
+            vmObj = VirtualMachine.attach(pid);
+            if (vmObj != null) {
+                vmObj.loadAgent("/Users/zyq/project/study-project/swcourse/swcourse-swcourse1" +
+                        "/target/swcourse-swcourse1-1.0.0-SNAPSHOT-jar-with-dependencies.jar", null);
+            }
+        } finally {
+            if (null != vmObj) {
+                vmObj.detach();
+            }
+        }
+        return "success";
     }
 }

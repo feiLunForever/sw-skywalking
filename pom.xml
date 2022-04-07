@@ -19,10 +19,9 @@
 
 
     <modules>
-        <module>swcourse1</module>
+        <module>swcourse-swcourse1</module>
         <module>swcourse-cloud-consumer</module>
         <module>swcourse-cloud-provider</module>
-        <module>swcourse-cloud-api</module>
     </modules>
 
 </project>
