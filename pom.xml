@@ -20,6 +20,7 @@
 
     <modules>
         <module>swcourse-swcourse1</module>
+        <module>swcourse-swagger</module>
         <module>swcourse-cloud-consumer</module>
         <module>swcourse-cloud-provider</module>
     </modules>

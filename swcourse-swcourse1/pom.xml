@@ -46,9 +46,9 @@
                         <manifestEntries>
 <!--                            设置manifest配置文件-->
 <!--                            <Premain-Class>com.swcourse.swcourse1.randomtest.AgentPremain</Premain-Class>-->
-                            <Premain-Class>com.swcourse.swcourse1.bytebuddyAgentTest.AgentMethodCost</Premain-Class>
-<!--                            <Agent-Class>com.swcourse.swcourse1.randomtest.AgentAttach</Agent-Class>-->
-                            <Agent-Class>com.swcourse.swcourse1.bytebuddyAgentTest.AgentMethodCost</Agent-Class>
+<!--                            <Premain-Class>com.swcourse.swcourse1.bytebuddyAgentTest.AgentMethodCost</Premain-Class>-->
+                            <Agent-Class>com.swcourse.swcourse1.randomtest.AgentAttach</Agent-Class>
+<!--                            <Agent-Class>com.swcourse.swcourse1.bytebuddyAgentTest.AgentMethodCost</Agent-Class>-->
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
                             <Can-Retransform-Classes>true</Can-Retransform-Classes>
                         </manifestEntries>
