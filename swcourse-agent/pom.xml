@@ -10,7 +10,7 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>swcourse-swcourse1</artifactId>
+    <artifactId>swcourse-agent</artifactId>
     <packaging>jar</packaging>
 
 
@@ -45,10 +45,10 @@
                     <archive>
                         <manifestEntries>
 <!--                            设置manifest配置文件-->
-<!--                            <Premain-Class>com.swcourse.swcourse1.randomtest.AgentPremain</Premain-Class>-->
-<!--                            <Premain-Class>com.swcourse.swcourse1.bytebuddyAgentTest.AgentMethodCost</Premain-Class>-->
-                            <Agent-Class>com.swcourse.swcourse1.randomtest.AgentAttach</Agent-Class>
-<!--                            <Agent-Class>com.swcourse.swcourse1.bytebuddyAgentTest.AgentMethodCost</Agent-Class>-->
+                            <Premain-Class>com.swcourse.agent.randomtest.AgentPremain</Premain-Class>
+<!--                            <Premain-Class>com.swcourse.agent.bytebuddyAgentTest.AgentMethodCost</Premain-Class>-->
+<!--                            <Agent-Class>com.swcourse.agent.randomtest.AgentAttach</Agent-Class>-->
+<!--                            <Agent-Class>com.swcourse.agent.bytebuddyAgentTest.AgentMethodCost</Agent-Class>-->
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
                             <Can-Retransform-Classes>true</Can-Retransform-Classes>
                         </manifestEntries>
