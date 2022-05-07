@@ -2,6 +2,8 @@ package com.swcourse.cloud.provider.swcourse1;
 
 import cn.hutool.core.util.RandomUtil;
 import com.sun.tools.attach.VirtualMachine;
+import org.springframework.boot.ImageBanner;
+import org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,8 @@ public class SwCourse1Controller {
 
     @GetMapping("/premainTest")
     public String premainTest(){
+        System.out.println(SwCourse1Controller.class.getClassLoader());
+
         return RandomUtil.simpleUUID();
     }
 
@@ -27,8 +31,9 @@ public class SwCourse1Controller {
         try {
             vmObj = VirtualMachine.attach(pid);
             if (vmObj != null) {
-                vmObj.loadAgent("/Users/zyq/project/study-project/swcourse/swcourse-swcourse1" +
-                        "/target/swcourse-swcourse1-1.0.0-SNAPSHOT-jar-with-dependencies.jar", null);
+                vmObj.loadAgent("/Users/zyq/project/study-project/swcourse/swcourse-agent" +
+                        "/target/swcourse-agent-1.0.0-SNAPSHOT-jar-with-dependencies.jar=removeTransformer," +
+                        "/Users/zyq/project/study-project/swcourse/swcourse-agent/src/main/doc/RandomUtil.class", null);
             }
         } finally {
             if (null != vmObj) {

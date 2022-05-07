@@ -3,6 +3,7 @@ package com.swcourse.springcloud.provider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.ImageBanner;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,6 +31,7 @@ public class ProviderController {
         PunchRecordDO punchRecordDO = PunchRecordDO.builder().name("111").build();
         punchRecordMapper.insert(punchRecordDO);
 
+        System.out.println(ImageBanner.class.getClassLoader());
         return "Hello Nacos Discovery " + string;
     }
 

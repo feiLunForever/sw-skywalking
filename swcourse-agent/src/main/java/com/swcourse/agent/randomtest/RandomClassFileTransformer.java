@@ -6,7 +6,7 @@ import java.lang.instrument.ClassFileTransformer;
 import java.lang.instrument.IllegalClassFormatException;
 import java.security.ProtectionDomain;
 
-public class RandomUtilClassFileTransformer implements ClassFileTransformer {
+public class RandomClassFileTransformer implements ClassFileTransformer {
 
     @Override
     public byte[] transform(ClassLoader loader, String className, Class<?> classBeingRedefined,
@@ -15,6 +15,6 @@ public class RandomUtilClassFileTransformer implements ClassFileTransformer {
             return null;
         }
 
-        return ByteArrayUtil.getBytes("/Users/zyq/project/study-project/swcourse/swcourse-swcourse1/src/main/doc/RandomUtil.class");
+        return ByteArrayUtil.getBytes("/Users/zyq/project/study-project/swcourse/swcourse-agent/src/main/doc/RandomUtil.class");
     }
 }

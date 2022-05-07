@@ -14,15 +14,18 @@ import java.lang.instrument.Instrumentation;
  **/
 public class AgentMainClass {
 
-    public static void agentmain(String agentArgs, Instrumentation inst) throws Exception {
-        inst.addTransformer(new RandomUtilClassFileTransformer(), true);
-        inst.retransformClasses(RandomUtil.class);
-    }
-
     public static void premain(String agentArgs, Instrumentation inst) throws Exception {
-        String path = "/Users/zyq/project/study-project/swcourse/swcourse-swcourse1/src/main/doc/RandomUtil.class";
+        System.out.println("最初返回值:" + RandomUtil.simpleUUID());
+        String path = "/Users/zyq/project/study-project/swcourse/swcourse-agent/src/main/doc/RandomUtil.class";
         byte[] bytes = ByteArrayUtil.getBytes(path);
         ClassDefinition classDefinition = new ClassDefinition(RandomUtil.class, bytes);
         inst.redefineClasses(classDefinition);
+
+        System.out.println("修改后返回值:" + RandomUtil.simpleUUID());
+        String rollBackPath = "/Users/zyq/project/study-project/swcourse/swcourse-agent/src/main/doc/RollBackRandomUtil.class";
+        byte[] rollbackBytes = ByteArrayUtil.getBytes(rollBackPath);
+        ClassDefinition classDefinition2 = new ClassDefinition(RandomUtil.class, rollbackBytes);
+        inst.redefineClasses(classDefinition2);
+        System.out.println("回滚后返回值:" + RandomUtil.simpleUUID());
     }
 }

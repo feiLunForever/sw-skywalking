@@ -1,4 +1,4 @@
-package com.swcourse.agent.bytebuddyAgentTest;
+package com.swcourse.bytebuddy;
 
 import net.bytebuddy.implementation.bind.annotation.Origin;
 import net.bytebuddy.implementation.bind.annotation.RuntimeType;
