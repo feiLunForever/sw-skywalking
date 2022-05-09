@@ -21,11 +21,10 @@
     <modules>
         <module>swcourse-agent</module>
         <module>swcourse-swagger</module>
-        <module>swcourse-cloud-consumer</module>
-        <module>swcourse-cloud-provider</module>
         <module>swcourse-grpc</module>
         <module>swcourse-bytebuddy</module>
         <module>swcourse-springcloud</module>
+        <module>swcourse-test</module>
     </modules>
 
 </project>

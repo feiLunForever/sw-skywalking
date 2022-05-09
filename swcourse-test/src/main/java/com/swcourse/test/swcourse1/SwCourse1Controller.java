@@ -1,9 +1,6 @@
-package com.swcourse.cloud.provider.swcourse1;
+package com.swcourse.test.swcourse1;
 
 import cn.hutool.core.util.RandomUtil;
-import com.sun.tools.attach.VirtualMachine;
-import org.springframework.boot.ImageBanner;
-import org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

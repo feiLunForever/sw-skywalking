@@ -1,4 +1,4 @@
-package com.swcourse.cloud.provider;
+package com.swcourse.test;
 
 
 import org.springframework.boot.SpringApplication;
