@@ -45,7 +45,9 @@ public class ByteBuddyTest {
         Class clazz = new ByteBuddy().subclass(BaseTiger.class)
                 .defineMethod("dinner", String.class, Modifier.PUBLIC)
                 .withParameters(String.class)
-                .intercept(MethodDelegation.to(new CreateMethodInterceptor()))
+//                .intercept(FixedValue.value("111"))
+                .intercept(MethodDelegation.to(CreateMethodInterceptor.class))
+//                .intercept(MethodDelegation.to(new CreateMethodInterceptor()))
                 .make().load(this.getClass().getClassLoader()).getLoaded();
         Object value = clazz.getMethod("dinner", String.class).invoke(clazz.newInstance(), "2022");
         System.out.println(value);
@@ -56,7 +58,12 @@ public class ByteBuddyTest {
     @Test
     public void testAddInterceptor() throws Exception {
         new ByteBuddy().subclass(BaseTiger.class)
-                .method(named("eat"))
+
+
+//                .method(named("eat").and(named("run")))
+//                .method(ElementMatchers.isPublic())
+//                .method(ElementMatchers.is(ElementMatchers.returns(String.class)))
+                .method(ElementMatchers.takesArgument(0, String.class))
 //                .intercept(FixedValue.value("返回值"))
                 .intercept(MethodDelegation.to(AnimalWaterInterceptor.class))
                 .make().load(this.getClass().getClassLoader())
