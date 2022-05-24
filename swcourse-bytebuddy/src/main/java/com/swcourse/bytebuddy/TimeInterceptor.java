@@ -18,11 +18,9 @@ public class TimeInterceptor {
     public static Object intercept(@Origin Method method,
                                    @SuperCall Callable<?> callable) throws Exception {
         long start = System.currentTimeMillis();
-        try {
-            return callable.call(); // 执行原函数
-        } finally {
-            System.out.println(method.getName() + ":"
-                    + (System.currentTimeMillis() - start) + "ms");
-        }
+        System.out.println(method.getName() + ":"
+                + (System.currentTimeMillis() - start) + "ms");
+        return callable.call(); // 执行原函数
+
     }
 }

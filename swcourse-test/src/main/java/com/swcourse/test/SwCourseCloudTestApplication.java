@@ -5,9 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SwCourseCloudProviderApplication {
+public class SwCourseCloudTestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SwCourseCloudProviderApplication.class, args);
+        SpringApplication.run(SwCourseCloudTestApplication.class, args);
     }
 }

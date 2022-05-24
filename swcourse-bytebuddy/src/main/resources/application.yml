@@ -8,3 +8,9 @@ spring:
     hikari:
       minimum-idle: 5
       maximumPoolSize: 5
+
+
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true

@@ -19,25 +19,6 @@ public class SwCourse1Controller {
     @GetMapping("/premainTest")
     public String premainTest(){
         System.out.println(SwCourse1Controller.class.getClassLoader());
-
         return RandomUtil.simpleUUID();
-    }
-
-    @GetMapping("/attachTest/{pid}")
-    public String premainTest(@PathVariable String pid) throws Exception{
-        VirtualMachine vmObj = null;
-        try {
-            vmObj = VirtualMachine.attach(pid);
-            if (vmObj != null) {
-                vmObj.loadAgent("/Users/zyq/project/study-project/swcourse/swcourse-agent" +
-                        "/target/swcourse-agent-1.0.0-SNAPSHOT-jar-with-dependencies.jar=removeTransformer," +
-                        "/Users/zyq/project/study-project/swcourse/swcourse-agent/src/main/doc/RandomUtil.class", null);
-            }
-        } finally {
-            if (null != vmObj) {
-                vmObj.detach();
-            }
-        }
-        return "success";
     }
 }
