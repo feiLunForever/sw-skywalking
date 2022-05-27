@@ -17,6 +17,10 @@
 
     <packaging>pom</packaging>
 
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
     <modules>
         <module>swcourse-agent</module>
@@ -26,5 +30,4 @@
         <module>swcourse-springcloud</module>
         <module>swcourse-test</module>
     </modules>
-
 </project>

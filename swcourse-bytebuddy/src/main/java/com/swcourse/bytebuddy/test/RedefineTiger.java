@@ -1,4 +1,4 @@
-package com.swcourse.bytebuddy;
+package com.swcourse.bytebuddy.test;
 
 /**
  * @author zhangyuqiang

@@ -1,4 +1,4 @@
-package com.swcourse.bytebuddy;
+package com.swcourse.bytebuddy.test;
 
 import net.bytebuddy.ByteBuddy;
 import net.bytebuddy.agent.ByteBuddyAgent;
