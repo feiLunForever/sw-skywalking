@@ -1,4 +1,4 @@
-package com.swcourse.bytebuddy.bytebuddy;
+package com.swcourse.bytebuddy;
 
 import net.bytebuddy.implementation.bind.annotation.AllArguments;
 import net.bytebuddy.implementation.bind.annotation.Origin;
@@ -17,7 +17,6 @@ public class RedefineWaterInterceptor {
 
     @RuntimeType
     public String eat(String date) {
-        System.out.println(date + "tiger is eat");
         return date + "tiger is eat";
     }
 }
