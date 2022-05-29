@@ -42,8 +42,7 @@ public class EncryptTest {
      */
     @Test
     public void selectTest() {
-        PunchRecordDO punchRecordDO = PunchRecordDO.builder().name("xiaoan")
-                .build();
+        PunchRecordDO punchRecordDO = PunchRecordDO.builder().name("xiaoan").build();
         log.info("{}",punchRecordMapper.selectOne(new QueryWrapper(punchRecordDO)));
     }
 }
