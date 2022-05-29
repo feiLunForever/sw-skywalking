@@ -25,6 +25,7 @@ public class ArthasMain {
     public static Map<String, Class> classMap = new HashMap<>();
 
     public static void agentmain(String agentArgs, Instrumentation inst) throws Exception {
+        System.out.println("我正在使用agentmain2");
         // 为了保证 每次调用时的 Instrumentation都是一致，所以赋值到静态变量
         if (instrumentation == null) {
             instrumentation = inst;

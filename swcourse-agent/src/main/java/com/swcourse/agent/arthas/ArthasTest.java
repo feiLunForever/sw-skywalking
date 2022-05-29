@@ -1,11 +1,7 @@
 package com.swcourse.agent.arthas;
 
-import com.sun.tools.attach.AgentInitializationException;
-import com.sun.tools.attach.AgentLoadException;
 import com.sun.tools.attach.VirtualMachine;
 import org.junit.Test;
-
-import java.io.IOException;
 
 /**
  * @author zhangyuqiang
@@ -19,7 +15,7 @@ public class ArthasTest {
     public void addTransform() throws Exception {
         VirtualMachine vmObj = null;
         try {
-            vmObj = VirtualMachine.attach("3780");
+            vmObj = VirtualMachine.attach("62770");
             if (vmObj != null) {
                 vmObj.loadAgent("/Users/zyq/project/study-project/swcourse/swcourse-agent" +
                         "/target/swcourse-agent-1.0.0-SNAPSHOT-jar-with-dependencies.jar=retransformClasses," +
