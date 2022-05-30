@@ -26,22 +26,23 @@ public class ByteBuddyTest {
     public void testCreateClass() throws Exception {
         new ByteBuddy().subclass(BaseTiger.class).make()
                 .load(this.getClass().getClassLoader()).getLoaded()
-                .newInstance().eat("2022");
+                .newInstance().eat(2022, "apple");
     }
 
     /**
-     * 创建方法(使用静态和非静态)
+     * 创建方法
      */
     @Test
-    public void testCreateMethod() throws Exception {
+    public void testCreateMethod1() throws Exception {
         Class clazz = new ByteBuddy().subclass(BaseTiger.class)
                 .defineMethod("dinner", String.class, Modifier.PUBLIC)
                 .withParameters(String.class)
-//                .intercept(FixedValue.value("111"))
-                .intercept(MethodDelegation.to(CreateMethodInterceptor.class))
+                .intercept(FixedValue.value("111"))
+//                .intercept(MethodDelegation.to(CreateMethodInterceptor.class))
 //                .intercept(MethodDelegation.to(new CreateMethodInterceptor()))
                 .make().load(this.getClass().getClassLoader()).getLoaded();
-        Object value = clazz.getMethod("dinner", String.class).invoke(clazz.newInstance(), "2022");
+        Object value = clazz.getMethod("dinner", String.class)
+                .invoke(clazz.newInstance(), 2022, "apple");
         System.out.println(value);
     }
 
@@ -50,14 +51,14 @@ public class ByteBuddyTest {
     @Test
     public void testAddInterceptor() throws Exception {
         new ByteBuddy().subclass(BaseTiger.class)
-//                .method(named("eat").and(named("run")))
+                .method(named("eat").or(named("run")))
 //                .method(ElementMatchers.isPublic())
 //                .method(ElementMatchers.is(ElementMatchers.returns(String.class)))
-                .method(ElementMatchers.takesArgument(0, String.class))
+//                .method(ElementMatchers.takesArgument(0, String.class))
 //                .intercept(FixedValue.value("返回值"))
                 .intercept(MethodDelegation.to(AnimalWaterInterceptor.class))
                 .make().load(this.getClass().getClassLoader())
-                .getLoaded().newInstance().eat("2022");
+                .getLoaded().newInstance().eat(2022, "apple");
     }
 
     @Test
@@ -69,7 +70,7 @@ public class ByteBuddyTest {
                 .make()
                 .load(this.getClass().getClassLoader(), ClassReloadingStrategy.fromInstalledAgent());
         BaseTiger baseTiger = new BaseTiger();
-        System.out.println(baseTiger.eat("222"));
+        System.out.println(baseTiger.eat(2022, "apple"));
     }
 
 
