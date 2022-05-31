@@ -29,40 +29,48 @@ public class ByteBuddyTest {
                 .newInstance().eat(2022, "apple");
     }
 
-    /**
-     * 创建方法
-     */
     @Test
-    public void testCreateMethod1() throws Exception {
+    public void testCreateMethodFixedValue() throws Exception {
         Class clazz = new ByteBuddy().subclass(BaseTiger.class)
                 .defineMethod("dinner", String.class, Modifier.PUBLIC)
-                .withParameters(String.class)
-                .intercept(FixedValue.value("111"))
-//                .intercept(MethodDelegation.to(CreateMethodInterceptor.class))
-//                .intercept(MethodDelegation.to(new CreateMethodInterceptor()))
+                .withParameters(Integer.class, String.class)
+                .intercept(FixedValue.value("my return value"))
                 .make().load(this.getClass().getClassLoader()).getLoaded();
-        Object value = clazz.getMethod("dinner", String.class)
+        Object value = clazz.getMethod("dinner", Integer.class, String.class)
                 .invoke(clazz.newInstance(), 2022, "apple");
         System.out.println(value);
     }
 
-    // 生成类并且添加拦截，需要静态方法
-    // 拦截方法
+    @Test
+    public void testCreateMethodInterceptor() throws Exception {
+        Class clazz = new ByteBuddy().subclass(BaseTiger.class)
+                .defineMethod("dinner", String.class, Modifier.PUBLIC)
+                .withParameters(Integer.class, String.class)
+                .intercept(MethodDelegation.to(CreateMethodInterceptor.class))
+//                .intercept(MethodDelegation.to(new CreateMethodInterceptor()))
+                .make().load(this.getClass().getClassLoader()).getLoaded();
+        Object value = clazz.getMethod("dinner", Integer.class, String.class)
+                .invoke(clazz.newInstance(), 2022, "apple");
+        System.out.println(value);
+    }
+
+
     @Test
     public void testAddInterceptor() throws Exception {
-        new ByteBuddy().subclass(BaseTiger.class)
+        Object value = new ByteBuddy().subclass(BaseTiger.class)
                 .method(named("eat").or(named("run")))
 //                .method(ElementMatchers.isPublic())
 //                .method(ElementMatchers.is(ElementMatchers.returns(String.class)))
 //                .method(ElementMatchers.takesArgument(0, String.class))
 //                .intercept(FixedValue.value("返回值"))
-                .intercept(MethodDelegation.to(AnimalWaterInterceptor.class))
+                .intercept(MethodDelegation.to(CreateMethodInterceptor.class))
                 .make().load(this.getClass().getClassLoader())
                 .getLoaded().newInstance().eat(2022, "apple");
+        System.out.println(value);
     }
 
     @Test
-    public void redefineClass1() throws Exception {
+    public void redefineFixedValue() throws Exception {
         ByteBuddyAgent.install();
         new ByteBuddy().redefine(BaseTiger.class)
                 .method(named("eat"))
@@ -75,13 +83,14 @@ public class ByteBuddyTest {
 
 
     @Test
-    public void redefineClass2() throws Exception {
+    public void redefineClass() throws Exception {
         ByteBuddyAgent.install();
-        RedefineTiger redefineTiger = new RedefineTiger();
-        new ByteBuddy().redefine(BaseTiger.class)
-                .name(redefineTiger.getClass().getName())
+        BaseTiger baseTiger = new BaseTiger();
+        baseTiger.eat(2022,"apple");
+        new ByteBuddy().redefine(RedefineTiger.class)
+                .name(baseTiger.getClass().getName())
                 .make()
                 .load(this.getClass().getClassLoader(), ClassReloadingStrategy.fromInstalledAgent());
-        System.out.println(redefineTiger.eat("2022"));
+        baseTiger.eat(2022,"apple");
     }
 }

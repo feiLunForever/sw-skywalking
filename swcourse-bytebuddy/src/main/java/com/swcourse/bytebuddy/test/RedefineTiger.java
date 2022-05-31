@@ -7,13 +7,9 @@ package com.swcourse.bytebuddy.test;
  * @create 2022-05-10 17:39
  **/
 public class RedefineTiger {
-    public String eat(String date) {
-        System.out.println(date + " redefineTiger is eat");
-        return date + " redefineTiger is eat";
+    public String eat2(Integer date, String food) {
+        System.out.println(date + " redefineTiger is eat " + food);
+        return date + " tiger is eat";
     }
 
-    public String run(String date) {
-        System.out.println(date + " redefineTiger is run");
-        return date + " redefineTiger is run";
-    }
 }
