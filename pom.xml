@@ -17,12 +17,17 @@
 
     <packaging>pom</packaging>
 
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 
     <modules>
-        <module>swcourse1</module>
-        <module>swcourse-cloud-consumer</module>
-        <module>swcourse-cloud-provider</module>
-        <module>swcourse-cloud-api</module>
+        <module>swcourse-agent</module>
+        <module>swcourse-swagger</module>
+        <module>swcourse-grpc</module>
+        <module>swcourse-bytebuddy</module>
+        <module>swcourse-springcloud</module>
+        <module>swcourse-test</module>
     </modules>
-
 </project>
