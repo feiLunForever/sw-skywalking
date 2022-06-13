@@ -5,9 +5,11 @@ import net.bytebuddy.agent.ByteBuddyAgent;
 import net.bytebuddy.dynamic.loading.ClassReloadingStrategy;
 import net.bytebuddy.implementation.FixedValue;
 import net.bytebuddy.implementation.MethodDelegation;
+import net.bytebuddy.implementation.bind.annotation.Morph;
 import net.bytebuddy.matcher.ElementMatchers;
 import org.junit.Test;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
 import static net.bytebuddy.matcher.ElementMatchers.named;
@@ -63,10 +65,20 @@ public class ByteBuddyTest {
 //                .method(ElementMatchers.is(ElementMatchers.returns(String.class)))
 //                .method(ElementMatchers.takesArgument(0, String.class))
 //                .intercept(FixedValue.value("返回值"))
-                .intercept(MethodDelegation.to(CreateMethodInterceptor.class))
+                .intercept(MethodDelegation.to(AnimalWaterInterceptor.class))
                 .make().load(this.getClass().getClassLoader())
                 .getLoaded().newInstance().eat(2022, "apple");
-        System.out.println(value);
+    }
+
+    @Test
+    public void testUpdateArgumentsInterceptor() throws Exception {
+        Object value = new ByteBuddy().subclass(BaseTiger.class)
+                .method(named("eat").or(named("run")))
+                .intercept(MethodDelegation.withDefaultConfiguration()
+                        .withBinders(Morph.Binder.install(OverrideCallable.class))
+                        .to( UpdateArgumentsInterceptor.class))
+                .make().load(this.getClass().getClassLoader())
+                .getLoaded().newInstance().eat(2022, "apple");
     }
 
     @Test
@@ -86,11 +98,12 @@ public class ByteBuddyTest {
     public void redefineClass() throws Exception {
         ByteBuddyAgent.install();
         BaseTiger baseTiger = new BaseTiger();
-        baseTiger.eat(2022,"apple");
+        baseTiger.eat(2022, "apple");
         new ByteBuddy().redefine(RedefineTiger.class)
                 .name(baseTiger.getClass().getName())
                 .make()
                 .load(this.getClass().getClassLoader(), ClassReloadingStrategy.fromInstalledAgent());
-        baseTiger.eat(2022,"apple");
+        baseTiger.eat(2022, "apple");
     }
+
 }
