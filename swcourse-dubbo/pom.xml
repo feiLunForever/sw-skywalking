@@ -19,6 +19,7 @@
     <modules>
         <module>swcourse-dubbo-consumer</module>
         <module>swcourse-dubbo-provider</module>
+        <module>swcourse-dubbo-common</module>
     </modules>
 
     <dependencyManagement>
