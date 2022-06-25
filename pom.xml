@@ -28,6 +28,7 @@
         <module>swcourse-grpc</module>
         <module>swcourse-bytebuddy</module>
         <module>swcourse-springcloud</module>
+        <module>swcourse-dubbo</module>
         <module>swcourse-test</module>
     </modules>
 </project>
