@@ -29,5 +29,6 @@
         <module>swcourse-bytebuddy</module>
         <module>swcourse-springcloud</module>
         <module>swcourse-test</module>
+        <module>swcourse-rocketmq</module>
     </modules>
 </project>
