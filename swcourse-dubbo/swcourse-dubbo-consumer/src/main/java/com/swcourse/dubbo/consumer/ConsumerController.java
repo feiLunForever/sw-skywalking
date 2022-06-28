@@ -24,6 +24,7 @@ public class ConsumerController {
     @GetMapping(value = "/consume")
     public String echo() throws InterruptedException {
         dubboService.helloDubbo("hello dubbo");
+//        dubboService.helloDubbo("hello dubbo");
         return "success";
     }
 }
