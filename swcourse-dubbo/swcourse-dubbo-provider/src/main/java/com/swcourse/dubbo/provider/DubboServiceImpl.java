@@ -1,5 +1,6 @@
 package com.swcourse.dubbo.provider;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.swcourse.dubbo.common.DubboService;
 
 /**
@@ -8,11 +9,12 @@ import com.swcourse.dubbo.common.DubboService;
  * @create 2022-06-25 21:44
  * @since 0.1.0
  **/
-@org.apache.dubbo.config.annotation.DubboService
+@Service
 public class DubboServiceImpl implements DubboService {
+
     @Override
     public String helloDubbo(String msg) {
-        System.out.printf(msg);
+        System.out.println(msg);
         return "success";
     }
 }
