@@ -1,6 +1,7 @@
-package com.swcourse.swagger;
+package com.swcourse.dump;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.swcourse.dump.PunchRecordDO;
 import org.apache.ibatis.annotations.Mapper;
 
 /**

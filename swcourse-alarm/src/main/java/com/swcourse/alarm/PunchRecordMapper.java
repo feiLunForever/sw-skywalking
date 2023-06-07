@@ -1,4 +1,4 @@
-package com.swcourse.swagger;
+package com.swcourse.alarm;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;

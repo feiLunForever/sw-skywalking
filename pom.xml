@@ -31,5 +31,8 @@
         <module>swcourse-dubbo</module>
         <module>swcourse-test</module>
         <module>swcourse-rocketmq</module>
+        <module>swcourse-logback</module>
+        <module>swcourse-alarm</module>
+        <module>swcourse-dump</module>
     </modules>
 </project>
